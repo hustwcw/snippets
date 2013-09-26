@@ -70,31 +70,27 @@ do_travel(struct trie_node_st *rootp)
 int
 main(void)
 {
-        char *linebuf=NULL, *line, *word;
-        size_t bufsize=0;
-        int ret;
- 
-        while (1) {
-                        ret=getline(&linebuf, &bufsize, stdin);
-                        if (ret==-1) {
-                                                break;
-                                        }
-                        line=linebuf;
-                        while (1) {
-                                                word = strsep(&line, spaces);
-                                                if (word==NULL) {
-                                                                                break;
-                                                                        }
-                                                if (word[0]=='\0') {
-                                                                                continue;
-                                                                        }
-                                                insert(word);
-                                        }
-                }
- 
+  char *linebuf=NULL, *line, *word;
+  size_t bufsize=0;
+  int ret;
+  while (1) {
+    ret=getline(&linebuf, &bufsize, stdin);
+    if (ret==-1) {
+      break;
+    }
+    line=linebuf;
+    while (1) {
+      word = strsep(&line, spaces);
+      if (word==NULL) {
+        break;
+      }
+      if (word[0]=='\0') {
+        continue;
+      }
+      insert(word);
+    }
+  }
 /* free(linebuf); */
- 
-        do_travel(&root);
- 
-        exit(0);
+  do_travel(&root);
+  exit(0);
 }
