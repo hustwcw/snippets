@@ -1,0 +1,35 @@
+class Node {
+public:
+  Node *left;
+  Node *right;
+  int value;
+};
+
+
+bool isBST(Node *root, int low, int high)
+{
+    if(root== NULL) return true;
+    if(root->value < high && root->value > low)
+    {
+        return isBST(root->left, low, root->value) && isBST(root->right, root->value, high);
+    }
+    else
+    {
+        return false;
+    }
+}
+  bool isSortTree(Node *root) {
+    if(root == NULL) return true;
+    return isBST(root, INT_MIN, INT_MAX);
+  }
+  
+  
+  输入int[] arr;
+有一排棍子，等间距摆放，间距1，棍子的底部在同一个水平线上，棍子i的高度可变，范围在 [0,arr[i]]之间.
+将相邻棍子的顶点用绳子相连，问绳子的最大长度能到多少？
+
+例如输入1，1，5
+最大长度应该出现在第一根棍子选择1， 第二根棍子选择0，第三根棍子选择5，
+dp[i][hi] = dp[i-1][h(i-1)]+(h(i-1)-hi)^2 +1
+
+
