@@ -2,4 +2,6 @@
 
 C/C++中，非const变量默认为extern。C语言中，const变量默认也是extern; 而在C++中const变量默认为static，要使const变量能够在其他文件中访问，必须显示的指定它为extern。
 
+C++要求const变量必须初始化，C语言则没有该要求
+
 

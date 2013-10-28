@@ -38,13 +38,13 @@ compute_prefix(pi, pattern);
 int q = 0;
 for(int i = 0; i < n; i++)
 {
+  while(q > 0 && text[i] != pattern[q])
+  {
+    q = pi[q-1];
+  }
 if(text[i] == pattern[q])
 {
 q++;
-}
-else
-{
-q = pi[q-1];
 }
 
 if(q == m)
